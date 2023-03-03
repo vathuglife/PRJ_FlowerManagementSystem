@@ -1,0 +1,152 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+.header-container{
+    width:100vw;
+}
+.header-contents{    
+    display:inline-block;
+}
+#search-box{
+    display:inline-block;
+    position:absolute;
+}
+#left-quote{    
+    color:green;
+    font-size:50px;    
+}
+#header-img{
+    margin-left:3.5em; 
+    margin-right:12em;
+    margin-bottom:-3em;
+}
+#right-quote{
+    
+    color:green;
+    font-size:50px;
+}
+#banner-img{
+    width:100vw;
+}
+
+
+/*Menu section*/
+#logo{
+    float:left;
+    width:10%;    
+    padding-right:20%;
+}
+.menu{        
+    background-color:rgb(253, 81, 109);        
+    height:3em;    
+    width:100vw;
+}
+
+#menu-options-container{        
+    margin-left:auto; 
+    margin-right:0;
+    float:right;     
+}
+
+.menu-options{
+    display:inline-block;    
+    color:white;
+    font-size:20px;
+    margin-right:1em;
+    
+}
+#search-bar{        
+    padding-top:1em;        
+    display:inline-block;    
+    width:22em;
+}
+
+#flower-meaning-img-div{
+    display:inline-block;
+}
+#flower-meaning-img{
+    width:400px;
+    height:400px;
+    display:inline-block;
+    margin-right:2em;
+    
+}
+#flower-meaning-para{ 
+   display:inline-block;
+   width:60vw;      
+}
+#flower-meaning-title{
+    color:rgb(241, 102, 125);
+    text-decoration:bold;
+}
+#flower-meaning-second{
+    color:rgb(215, 29, 60);
+}
+#flower-meaning-list{
+    color:rgb(29, 192, 192);
+}
+
+/*Best seller*/
+#best-seller-container{
+    width:100vw;
+    padding-left:1.8em;
+    
+}
+#best-seller-title{
+    text-align:center;
+    color:rgb(13, 217, 13);
+    margin-top:1em;
+    margin-top:1em;
+}
+.best-seller-item{
+    display:inline-block;    
+    border-width: 5px;
+    border-color:black;    
+    border-style:solid;
+    background-color:white;
+    margin-right:3em;
+    padding:10px 10px 10px 10px;
+    text-align:center;
+}
+.best-seller-img{
+    width:220px;
+    height:350px;
+}
+.flower-name{
+    color:green;
+    text-align:center;
+}
+.price{
+    color:rgb(236, 91, 0);
+    font-weight:bold;
+    font-size:20px;
+    text-align:center;
+}
+.buy-now-btn{
+    border-style:solid;
+    border-radius:20px;
+    margin:0 auto;
+    background-color:orange;
+    color:white;
+    height:20px;
+    width:100px;
+    padding-top:10px;
+    padding-bottom:10px;
+    
+}
+
+
+#contact-info-container{
+    margin-top:2em;
+    background-color:black;
+    padding-top:1em;
+    padding-bottom:1em;
+    color:white;
+    text-align:center;
+}
+
