@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>SearchServlet</servlet-name>
-        <servlet-class>Servlets.Users.SearchServlet</servlet-class>
+        <servlet-class>Servlets.Common.SearchServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MainController</servlet-name>
@@ -22,19 +22,19 @@
     </servlet>
     <servlet>
         <servlet-name>AddToCartServlet</servlet-name>
-        <servlet-class>Servlets.Users.AddToCartServlet</servlet-class>
+        <servlet-class>Servlets.Common.AddToCartServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteItemServlet</servlet-name>
-        <servlet-class>Servlets.Users.DeleteItemServlet</servlet-class>
+        <servlet-class>Servlets.Common.DeleteItemServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SubmitOrderServlet</servlet-name>
-        <servlet-class>Servlets.Users.SubmitOrderServlet</servlet-class>
+        <servlet-class>Servlets.Common.SubmitOrderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateCartServlet</servlet-name>
-        <servlet-class>Servlets.Users.UpdateCartServlet</servlet-class>
+        <servlet-class>Servlets.Common.UpdateCartServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateDetailsServlet</servlet-name>
@@ -59,6 +59,22 @@
     <servlet>
         <servlet-name>SearchAccountsServlet</servlet-name>
         <servlet-class>Servlets.Admin.SearchAccountsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelOrderServlet</servlet-name>
+        <servlet-class>Servlets.Users.CancelOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewPlantsServlet</servlet-name>
+        <servlet-class>Servlets.Admin.ViewPlantsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePlantServlet</servlet-name>
+        <servlet-class>Servlets.Admin.UpdatePlantServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddPlantServlet</servlet-name>
+        <servlet-class>Servlets.Admin.AddPlantServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -119,6 +135,22 @@
     <servlet-mapping>
         <servlet-name>SearchAccountsServlet</servlet-name>
         <url-pattern>/SearchAccountsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelOrderServlet</servlet-name>
+        <url-pattern>/CancelOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewPlantsServlet</servlet-name>
+        <url-pattern>/ViewPlantsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePlantServlet</servlet-name>
+        <url-pattern>/UpdatePlantServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPlantServlet</servlet-name>
+        <url-pattern>/AddPlantServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

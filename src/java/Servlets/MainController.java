@@ -56,14 +56,25 @@ public class MainController extends HttpServlet {
                 request.getRequestDispatcher("ShowOrdersByServlet").forward(request,response);            
             }else if(targetServlet.equals("showPlantDetails")){
                 request.getRequestDispatcher("PlantDetailServlet").forward(request,response);
+            }else if(targetServlet.equals("cancelOrder")){
+                request.getRequestDispatcher("CancelOrderServlet").forward(request,response);
+            }
             //Admin section
-            }else if(targetServlet.equals("manageAccounts")){
+            else if(targetServlet.equals("manageAccounts")){
                 request.getRequestDispatcher("ManageAccountServlet").forward(request,response);
             }else if(targetServlet.equals("updateAccStatus")){
                 request.getRequestDispatcher("UpdateAccStatusServlet").forward(request,response);
             }else if(targetServlet.equals("searchAccounts")){
                 request.getRequestDispatcher("SearchAccountsServlet").forward(request,response);
-            }            
+            }else if(targetServlet.equals("viewPlants")){
+                request.getRequestDispatcher("ViewPlantsServlet").forward(request,response);
+            }
+            else if(targetServlet.equals("addPlant")){
+                request.getRequestDispatcher("AddPlantServlet").forward(request,response);
+            }
+            else if(targetServlet.equals("updatePlant")){
+                request.getRequestDispatcher("UpdatePlantServlet").forward(request,response);
+            }
             else{
                 request.getRequestDispatcher("LogoutServlet").forward(request,response);
             }                        

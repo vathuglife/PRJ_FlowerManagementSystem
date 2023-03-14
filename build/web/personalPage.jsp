@@ -104,7 +104,7 @@
 		  <th>Order Date</th>
                   <th>Ship Date</th>
                   <th>Order's status</th>
-                  <th>action</th>
+                  <th>Action</th>
 		</tr>                
 	  
 	<%
@@ -125,21 +125,23 @@
                                 if(status==1){
                                     %>Processing<%
                                 }else if(status==2){
-                                    %>In Progress<%
+                                    %>Completed<%
                                 }else{
                                     %>Canceled
-                                    <a href="MainController?action=submitOrder">Order Again </a>
-                                    <%
-                                    /*Attach each canceled Order into the request body.
-                                        This is to help personalPage.jsp send this Order 
-                                        to the SubmitOrderServlet, using the setAttribute
-                                        method and getAttribute method.
-                                        */
-                                     session.setAttribute("currentOrder",eachOrder);
+                                    <a href="MainController?action=submitOrder&orderId=<%=eachOrder.getOrderID()%>">Order Again </a>
+                                    <%                                    
                                 }
                             %>
                         </td>
                         <td><a href="orderDetails.jsp?orderId=<%=eachOrder.getOrderID()%>">Details</a></td>                        
+                        <%                            
+                            if(status==1){
+                                %>
+                                    <td><a href="MainController?action=cancelOrder&orderId=<%=eachOrder.getOrderID()%>">Cancel Order</a></td>                        
+                                <%                            
+                            }
+                        %>
+                        
                     </tr>
          <%
                 }                        

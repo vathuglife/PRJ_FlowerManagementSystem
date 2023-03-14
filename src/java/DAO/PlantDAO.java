@@ -134,5 +134,67 @@ public class PlantDAO {
         
         
         return foundPlant;
+        
+    }
+    public static boolean addPlant(String name,int price,String imgPath,
+                String desc,int status,int category ){
+        
+        boolean isAdded = false;
+        Connection cn = null;
+        PreparedStatement pst = null;
+        try{
+            cn = DBUtils.makeConnection();
+            if(cn!=null){
+                String query = "INSERT INTO Plants(PName,price,imgPath,description,status,CateID)\n" +
+                                "VALUES(?,?,?,?,?,?)";
+                pst = cn.prepareStatement(query);
+                pst.setString(1,name);
+                pst.setInt(2,price);
+                pst.setString(3,imgPath);
+                pst.setString(4,desc);
+                pst.setInt(5,status);
+                pst.setInt(6,category);
+                
+                int result = pst.executeUpdate();
+                if(result!=0) isAdded = true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        
+        return isAdded;
+    }
+    public static boolean updatePlant(int plantId,String name,int price,String imgPath,
+                String desc,int status,int category ){
+        
+        boolean isAdded = false;
+        Connection cn = null;
+        PreparedStatement pst = null;
+        try{
+            cn = DBUtils.makeConnection();
+            if(cn!=null){
+                String query = "UPDATE Plants\n" +
+                                "SET PName = ?, price = ?, imgPath = ?, description = ?,\n" +
+                                "status = ?, cateID = ?\n" +
+                                "WHERE PID = ?";
+                pst = cn.prepareStatement(query);
+                pst.setString(1,name);
+                pst.setInt(2,price);
+                pst.setString(3,imgPath);
+                pst.setString(4,desc);
+                pst.setInt(5,status);
+                pst.setInt(6,category);
+                pst.setInt(7,plantId);
+                
+                int result = pst.executeUpdate();
+                if(result!=0) isAdded = true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        
+        return isAdded;
     }
 }

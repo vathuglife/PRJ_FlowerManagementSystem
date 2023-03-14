@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets.Users;
+package Servlets.Admin;
 
+import DAO.PlantDAO;
+import DTO.Plant;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author VietAnhOdyssey
  */
-public class DeleteItemServlet extends HttpServlet {
+public class ViewPlantsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,14 +34,12 @@ public class DeleteItemServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String plantId = request.getParameter("plantID");
-            HttpSession session = request.getSession();
-            HashMap<String,Integer> currentCart = (HashMap<String,Integer>)session.getAttribute("cart");
-            if(currentCart!=null){
-                currentCart.remove(plantId);
+            ArrayList<Plant> plantList = PlantDAO.getPlants("", "");
+            if(plantList!=null){
+                request.setAttribute("plantList",plantList);                
+                request.getRequestDispatcher("managePlants.jsp").forward(request, response);
+            
             }
-            session.setAttribute("cart",currentCart);
-            response.sendRedirect("ViewCart.jsp");
         }
     }
 

@@ -212,4 +212,23 @@ public class OrderDAO {
         }
         return isReordered;
     }
+    public static boolean cancelOrder(int orderId){
+        boolean isCanceled = false;        
+        Connection cn = null;
+        PreparedStatement pst = null;
+        try{
+            cn = DBUtils.makeConnection();
+            if(cn!=null){
+                String query = "UPDATE Orders\n" +
+                        "SET status = 3 WHERE OrderID = ?";
+                pst = cn.prepareStatement(query);
+                pst.setInt(1, orderId);
+                int result = pst.executeUpdate();
+                if(result!=0) isCanceled = true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return isCanceled;
+    }
 }

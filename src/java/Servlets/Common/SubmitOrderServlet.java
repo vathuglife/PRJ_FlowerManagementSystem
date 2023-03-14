@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets.Users;
+package Servlets.Common;
 
 import DAO.AccountDAO;
 import DAO.OrderDAO;
@@ -38,7 +38,7 @@ public class SubmitOrderServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession requestingSession = request.getSession();
         Cookie[] cookiesList = request.getCookies();
-        Order currentOrder = (Order)requestingSession.getAttribute("currentOrder");
+        int currentOrder = Integer.parseInt(request.getParameter("orderId"));
         HashMap<String,Integer> currentCart = (HashMap<String,Integer>)requestingSession.getAttribute("cart");
         //case 1: there is nothing in the cart. The !=null condition is for the event 
         //when the user ONLY PERFORMS THE RE-ORDER FUNCTION (second if-case, meaning that no Order/Cart is created.)
@@ -88,8 +88,8 @@ public class SubmitOrderServlet extends HttpServlet {
         }                      
         //Case 2: User performs the re-order function on a canceled order. (By clicking 
         //on the create order Link.)
-        else if(currentOrder!=null){                           
-            boolean isReordered = OrderDAO.Reorder(currentOrder.getOrderID());
+        else {                           
+            boolean isReordered = OrderDAO.Reorder(currentOrder);
             if(isReordered == false){
                 request.setAttribute("warningMsg","Something went wrong and we couldn't reorder this order.");            
             }            

@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets.Users;
+package Servlets.Common;
 
-import DTO.Plant;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author VietAnhOdyssey
  */
-public class SearchServlet extends HttpServlet {
+public class DeleteItemServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,19 +33,14 @@ public class SearchServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String inputQuery = request.getParameter("search-bar");
-            String option = request.getParameter("search-option");
-            if(inputQuery!=null && option!=null){
-                ArrayList<Plant> result = DAO.PlantDAO.getPlants(inputQuery,option);
-                if(result!=null){
-                    //adds the plant list to the request
-                    request.setAttribute("plantResultList",result);                    
-                    //Then sends the request with the result list to searchresult.jsp.                    
-                    request.getRequestDispatcher("searchresult.jsp").forward(request, response);
-                }
+            String plantId = request.getParameter("plantID");
+            HttpSession session = request.getSession();
+            HashMap<String,Integer> currentCart = (HashMap<String,Integer>)session.getAttribute("cart");
+            if(currentCart!=null){
+                currentCart.remove(plantId);
             }
-            
-                
+            session.setAttribute("cart",currentCart);
+            response.sendRedirect("ViewCart.jsp");
         }
     }
 

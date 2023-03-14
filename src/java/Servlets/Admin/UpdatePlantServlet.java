@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets.Users;
+package Servlets.Admin;
 
+import DAO.PlantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author VietAnhOdyssey
  */
-public class AddToCartServlet extends HttpServlet {
+public class UpdatePlantServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,31 +31,27 @@ public class AddToCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {            
-            String plantId = request.getParameter("plantID");
-            //Gets the current session that is related/binded to the current request
-            //sent from the jsp Page.            
-            HttpSession session = request.getSession(true);
-            HashMap<String,Integer> HashMapCart = (HashMap<String,Integer>)session.getAttribute("cart");
-            if(HashMapCart==null){ //If the cart is not already created, then create one.
-                HashMapCart = new HashMap<>();
-                HashMapCart.put(plantId, 1); //default quantity is 1.                
-            }else{ //If the cart is already created, but there is nothing inside the cart.
-                //Checks if the plant with a plantID is already available in the
-                //cart                
-                Integer tmp = HashMapCart.get(plantId);
-                if(tmp==null){
-                    HashMapCart.put(plantId,1);
-                }else{
-                    //if another plant with same PlantId is found, replace it with a new one.
-                    tmp++;
-                    HashMapCart.put(plantId,tmp); 
+        try (PrintWriter out = response.getWriter()) {
+             if(request.getParameter("isFromUpdateForm")==null){
+                request.getRequestDispatcher("managePlants.jsp").forward(request, response);
+            
+            }//ONLY RUNS WHEN user Clicks on the submit button OF THE UPDATE FORM!!!
+             //This is because, when that submit button is clicked, a new
+             //parameter with name (isFromUpdateForm) is created -> NO LONGER NULL -> ALLOWS THIS CODE TO BE RUN.
+             else{
+                int plantId = Integer.parseInt(request.getParameter("plantId"));
+                String newName = request.getParameter("newName");
+                int newPrice = Integer.parseInt(request.getParameter("newPrice"));
+                String newImg = request.getParameter("newImg");
+                String newDesc = request.getParameter("newDesc");
+                int newStatus = Integer.parseInt(request.getParameter("newStatus"));
+                int newCategory = Integer.parseInt(request.getParameter("newCategory"));
+
+                boolean isAdded = PlantDAO.updatePlant(plantId,newName, newPrice, newImg, newDesc, newStatus,newCategory);
+                if(isAdded){
+                    request.getRequestDispatcher("managePlants.jsp").forward(request,response);
                 }
             }
-            //Sets a new Cart into Java's Session Memory for 1 specific user.
-            session.setAttribute("cart",HashMapCart);
-            response.sendRedirect("index.jsp");
-            
         }
     }
 
