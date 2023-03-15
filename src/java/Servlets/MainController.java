@@ -75,6 +75,17 @@ public class MainController extends HttpServlet {
             else if(targetServlet.equals("updatePlant")){
                 request.getRequestDispatcher("UpdatePlantServlet").forward(request,response);
             }
+             else if(targetServlet.equals("viewCategories")){
+                request.getRequestDispatcher("ViewCategoriesServlet").forward(request,response);
+            }
+            else if(targetServlet.equals("addCategory")){
+                request.getRequestDispatcher("AddCategoryServlet").forward(request,response);
+            }else if(targetServlet.equals("viewOrders")){
+                request.getRequestDispatcher("ViewOrdersServlet").forward(request,response);
+            }else if(targetServlet.equals("getOrdersWithinDates")){
+                request.getRequestDispatcher("GetOrdersWithinDates").forward(request,response);
+            }
+            
             else{
                 request.getRequestDispatcher("LogoutServlet").forward(request,response);
             }                        

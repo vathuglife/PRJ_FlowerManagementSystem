@@ -59,9 +59,9 @@ and open the template in the editor.
                     <ul>
                         <li><a href="MainController?action=manageAccounts">Manage Accounts</a></li>
                         <li><a href="searchAccounts.jsp">Search Accounts</a></li>
-                        <li><a href="#">Manage Orders</a></li>
+                        <li><a href="MainController?action=viewOrders">Manage Orders</a></li>
                         <li><a href="managePlants.jsp">Manage Plants</a></li>                        
-                        <li><a href="#">Manage Categories</a></li>                
+                        <li><a href="manageCategories.jsp">Manage Categories</a></li>                
                         <li><a href="MainController?action=Logout">Logout</a></li>         
                     </ul>
                 

@@ -76,6 +76,22 @@
         <servlet-name>AddPlantServlet</servlet-name>
         <servlet-class>Servlets.Admin.AddPlantServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewCategoriesServlet</servlet-name>
+        <servlet-class>Servlets.Admin.ViewCategoriesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCategoryServlet</servlet-name>
+        <servlet-class>Servlets.Admin.AddCategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOrdersServlet</servlet-name>
+        <servlet-class>Servlets.Admin.ViewOrdersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetOrdersWithinDates</servlet-name>
+        <servlet-class>Servlets.Admin.GetOrdersWithinDates</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -151,6 +167,22 @@
     <servlet-mapping>
         <servlet-name>AddPlantServlet</servlet-name>
         <url-pattern>/AddPlantServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCategoriesServlet</servlet-name>
+        <url-pattern>/ViewCategoriesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCategoryServlet</servlet-name>
+        <url-pattern>/AddCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOrdersServlet</servlet-name>
+        <url-pattern>/ViewOrdersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetOrdersWithinDates</servlet-name>
+        <url-pattern>/GetOrdersWithinDates</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

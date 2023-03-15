@@ -67,7 +67,41 @@ public class OrderDAO {
       }
       return orderList;
     }
-    
+    public static ArrayList<Order>getOrders(String email,String startDate,String endDate){
+      //options: 1: in progress, 2: completed, 3: canceled. 4: all.
+      ArrayList<Order> orderList = null;        
+      Connection cn = null;
+      PreparedStatement pst = null;
+      ResultSet rst = null;
+      
+      try{            
+          cn = DBUtils.makeConnection();
+          if(cn!=null){
+              orderList = new ArrayList<>();
+              String query = "SELECT o.OrderID,o.OrdDate,o.shipdate,o.status,a.accID FROM Accounts a JOIN Orders o \n" +
+                                "ON a.accID = o.AccID\n" +
+                                "WHERE o.OrdDate BETWEEN "+"\'"+startDate +"\'"+
+                                " AND " +"\'"+endDate +"\'"+
+                                " AND a.email = "+"\'"+email +"\'";
+                                          
+              pst = cn.prepareStatement(query);
+                                         
+              rst = pst.executeQuery();
+              while(rst.next()){
+                  Order eachOrder = new Order(
+                          Integer.parseInt(rst.getString("OrderID")),
+                          rst.getString("OrdDate"),
+                          rst.getString("shipdate"),
+                          Integer.parseInt(rst.getString("status")),
+                          Integer.parseInt(rst.getString("accID"))
+                  );
+                  orderList.add(eachOrder);
+              }              
+          }
+      }catch(Exception e){
+      }
+      return orderList;
+    }
     public static ArrayList<OrderDetails>getOrderDetails(int orderID){
       ArrayList<OrderDetails> orderDetailsList = null;        
       Connection cn = null;

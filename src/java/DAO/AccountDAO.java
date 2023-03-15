@@ -49,6 +49,40 @@ public class AccountDAO {
         }
         return result;
     }
+    public static ArrayList<Account> getAccounts(){
+         Connection cn = null;
+        ArrayList<Account> accList = null;
+        PreparedStatement pst = null;
+        String checkQuery = null;
+        try{
+            cn = Tools.DBUtils.makeConnection();
+            if(cn!=null){
+                accList = new ArrayList<Account>();
+                checkQuery = "SELECT accID,email,password,fullname,status,role,phone FROM accounts a";
+
+                pst = cn.prepareStatement(checkQuery);                                        
+
+               
+                ResultSet rst = pst.executeQuery();
+                if(rst!=null && rst.next()){
+                  int accID = rst.getInt("accID");
+                  String mail = rst.getString("email");
+                  String pass = rst.getString("password");
+                  String fullname = rst.getString("fullname");
+                  String phone = rst.getString("phone");
+                  int status = rst.getInt("status");
+                  int role = rst.getInt("role");
+                  Account eachAcc = new Account(accID,mail,pass,fullname,phone,status,role);                  
+                  accList.add(eachAcc);
+                }
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            
+        }
+        return accList;
+    }
     public static Account CheckAccount(String email, String password){
         Connection cn = null;
         Account acc = null;

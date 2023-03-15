@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTO.Category;
 import DTO.Plant;
 import Tools.DBUtils;
 import java.sql.Connection;

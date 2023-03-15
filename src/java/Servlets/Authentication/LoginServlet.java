@@ -104,13 +104,14 @@ public class LoginServlet extends HttpServlet {
                             }
                             response.sendRedirect("admin.jsp");                
                         }
-                    }else{ //Redirect to customer's page.
+                    }else if(acc.getStatus()!=1){ //Redirect to customer's page.
                         /*If a user is found, generates a session cookie to the front-end.
                         In short, a cookie identifies a user by (name, id,...)
                         In the future, for each request sent to the back-end
                         That cookie is also sent, so that the back-end can check
                         Which user is, for example, adding an order, editing an order, or 
                         deleting an order.
+                        //Also, only allows a user to enter if he/she is NOT BLOCKED.
 
                         A cookie is pretty much like a ticket in an amusement park.
                         Without spending the money (logging in), you won't have the ticket. (cookie).
@@ -146,6 +147,9 @@ public class LoginServlet extends HttpServlet {
                         else{
                             response.sendRedirect("error.html");
                         }                    
+                }else{
+                    request.setAttribute("msg","User is blocked ya blyat! U might consider giang hoa with the admin...");
+                    request.getRequestDispatcher("error.jsp").forward(request,response);
                 }
             }                        
         }
