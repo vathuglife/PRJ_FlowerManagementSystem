@@ -16,6 +16,7 @@
         <%Plant foundPlant = (Plant)request.getAttribute("foundPlant");%>
         <h2>Plant Details</h2>
         <a href="ViewCart.jsp">Back to cart</a>
+        <a href="index.jsp">Back to home</a>
         <table>
             <th>
                 <td>Name</td>

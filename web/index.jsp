@@ -31,13 +31,13 @@
 				<img>
 			</div>			
 
-			<form id="search-bar" action="SearchServlet">
-				<input type="text" name="search-bar">			
-				<select name="search-option">
-					<option value="name">By Name</option>
-					<option value="category">By Category</option>					
-				</select>
-				<button type="submit"> Search</button>
+			<form id="search-bar" action="MainController">
+                            <input type="text" name="search-bar">			
+                            <select name="search-option">
+                                    <option value="name">By Name</option>
+                                    <option value="category">By Category</option>					
+                            </select>
+                            <input type="submit" name="action" value="search">
 			</form>
 			<div id="menu-options-container">			
 				<ul>
@@ -51,7 +51,7 @@
 					</li>
 					<li class="menu-options">
 						<a>
-							<a href="MainController?action=Login">User Page</a>
+							<a href="personalPage.jsp">User Page</a>
 						</a>
 					</li>
 					<li class="menu-options">
@@ -78,6 +78,7 @@
                                 Iterator<Plant> plantListIterator = plantList.iterator();
                                 while(plantListIterator.hasNext()){
                                     Plant eachPlant = plantListIterator.next();
+                                    int eachPlantId = eachPlant.getId();
                                 %>
                                       <div class="best-seller-item">
 
@@ -85,7 +86,10 @@
                                        <h3 class="flower-name"><%=eachPlant.getName()%></h3>
                                        <p class="price"><%=eachPlant.getPrice()%></p>                                       
                                        <div>
-                                           <a href="MainController?action=addToCart&plantID=<%=eachPlant.getId()%>">Add to cart</a>
+                                           <a href="MainController?action=addToCart&plantID=<%=eachPlant.getId()%>">Add to cart</a>                                            
+                                       </div>
+                                       <div>
+                                           <a href="MainController?action=showPlantDetails&plantId=<%=eachPlantId%>">View Details</a>
                                        </div>
                                 </div>
                                 <%

@@ -37,7 +37,9 @@ public class MainController extends HttpServlet {
             if(targetServlet==null){
                 response.sendRedirect("index.jsp");
             }else if(targetServlet.equals("Register")){
-                response.sendRedirect("RegisterServlet");
+                request.getRequestDispatcher("RegisterServlet").forward(request, response);
+            }else if(targetServlet.equals("search")){                    
+                request.getRequestDispatcher("SearchServlet").forward(request, response);       
             }else if (targetServlet.equals("Login")){
                 request.getRequestDispatcher("LoginServlet").forward(request,response);          
             }else if (targetServlet.equals("addToCart")){
@@ -58,6 +60,8 @@ public class MainController extends HttpServlet {
                 request.getRequestDispatcher("PlantDetailServlet").forward(request,response);
             }else if(targetServlet.equals("cancelOrder")){
                 request.getRequestDispatcher("CancelOrderServlet").forward(request,response);
+            }else if(targetServlet.equals("reorder")){
+                request.getRequestDispatcher("ReorderServlet").forward(request,response);
             }
             //Admin section
             else if(targetServlet.equals("manageAccounts")){

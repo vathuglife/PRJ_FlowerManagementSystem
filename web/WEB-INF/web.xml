@@ -92,6 +92,10 @@
         <servlet-name>GetOrdersWithinDates</servlet-name>
         <servlet-class>Servlets.Admin.GetOrdersWithinDates</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReorderServlet</servlet-name>
+        <servlet-class>Servlets.Common.ReorderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>GetOrdersWithinDates</servlet-name>
         <url-pattern>/GetOrdersWithinDates</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReorderServlet</servlet-name>
+        <url-pattern>/ReorderServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

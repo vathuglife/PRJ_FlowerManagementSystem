@@ -25,6 +25,7 @@
         <title>Kore wa user page bietch</title>
     </head>
     <body>
+        <h2>Personal Page</h2>
         <a href="MainController">Back to home</a>
         <%
             /*Checks if the user is already logged in WHEN HE/SHE access this PersonalPage
@@ -98,6 +99,18 @@
                     </select>
                     <input type="submit" value="sortOrders" name="action">
                 </form>
+                
+                <form action="MainController">
+                    From <input type="date" name="beginDate" 
+                            placeholder="dd-mm-yyyy" value=""
+                            min="2020-01-01" max="2025-12-31"> <br>
+                    To <input type="date" name="endDate" 
+                            placeholder="dd-mm-yyyy" value=""
+                            min="2020-01-01" max="2025-12-31"> 
+                    <input type="hidden" name="userEmail" value="<%=account.getEmail()%>" >
+                    <input type="hidden" name="fromUser" value="1" >
+                    <input type="submit" name="action" value="getOrdersWithinDates">
+                </form>
             <table id="result-table">
 		<tr>
 		  <th>Order ID</th>
@@ -128,7 +141,7 @@
                                     %>Completed<%
                                 }else{
                                     %>Canceled
-                                    <a href="MainController?action=submitOrder&orderId=<%=eachOrder.getOrderID()%>">Order Again </a>
+                                    <a href="MainController?action=reorder&orderId=<%=eachOrder.getOrderID()%>">Order Again </a>
                                     <%                                    
                                 }
                             %>

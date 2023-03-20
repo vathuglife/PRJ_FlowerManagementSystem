@@ -17,12 +17,13 @@
     <body>
         <h1>Current User's Cart</h1>
         <a href="MainController">Back to home</a>
-         <tr>
-                                <th>Product ID</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Image</th>
-                                <th>Action</th>
+        <table>
+        <tr>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Action</th>
         </tr>
         <%
             HashMap<String,Integer> cart = (HashMap<String,Integer>)session.getAttribute("cart");
@@ -74,6 +75,7 @@
                     <%
                     }   
                     %>
+        </table> 
                     <h2>Total price: $<%=total%></h2>                    
                     <button name="action" value="submitOrder" onClick="location.href='MainController?action=submitOrder'">Create le new order
                                     </button>                                                        

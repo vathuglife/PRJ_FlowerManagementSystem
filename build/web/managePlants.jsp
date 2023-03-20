@@ -15,6 +15,7 @@
     </head>
     <body>
         <h1>Manage Plants</h1>
+        <a href="admin.jsp">Back to admin page</a>
         <a href="MainController?action=viewPlants">View All Plants</a>
         <a href="MainController?action=addPlant">Add a new plant </a>        
         <%

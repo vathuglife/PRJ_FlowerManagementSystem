@@ -37,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
                 String password = request.getParameter("password");
                 String name = request.getParameter("fullname");
                 String phone = request.getParameter("phone");                                                    
-                int status = 1; 
+                int status = 0; 
                 int role = 0;
                 Account newAcc = new Account(0,email,password,name,phone,status,role);
                 boolean isAdded = DAO.AccountDAO.InsertAccount(newAcc);
@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
                 }else{
                     out.print("Successfully added an account for you.");
                     //Automatically returns to home page after 1 second.
-                    response.addHeader("REFRESH", "1;URL=index.html");                    
+                    response.addHeader("REFRESH", "1;URL=index.jsp");                    
                     
                 }                
             }

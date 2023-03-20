@@ -15,6 +15,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <h2>Manage Orders</h2>
+        <a href="admin.jsp">Back to admin page</a>
         <%
             ArrayList<Account> accList = (ArrayList<Account>)request.getAttribute("accList");
             if(accList!=null){
@@ -56,6 +58,7 @@
                 String email = request.getParameter("userEmail");
                 %>
                 <h2>List of orders </h2>
+                <a href="admin.jsp">Back to admin page</a>
                 <h2>Filter Date</h2>
                 <form action="MainController">
                     From <input type="date" name="beginDate" 

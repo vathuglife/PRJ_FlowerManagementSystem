@@ -17,7 +17,8 @@
     <body>
         <h1>Manage Categories</h1>
         <a href="MainController?action=viewCategories">View All Categories</a>
-        <a href="MainController?action=addCategory">Add a new category </a>                     
+        <a href="MainController?action=addCategory">Add a new category </a>           
+        <a href="admin.jsp">Back to admin page</a>
         <%
             //Only shows the appropriate menu when the user clicks on one of the 
             //above hyperlinks. When doing so, a parameter called action with values

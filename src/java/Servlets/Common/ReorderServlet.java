@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets.Admin;
+package Servlets.Common;
 
 import DAO.OrderDAO;
-import DTO.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author VietAnhOdyssey
  */
-public class GetOrdersWithinDates extends HttpServlet {
+public class ReorderServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,20 +32,19 @@ public class GetOrdersWithinDates extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String beginDate = request.getParameter("beginDate");
-           String endDate = request.getParameter("endDate");
-           String userEmail = request.getParameter("userEmail");
-           ArrayList<Order> orderList = OrderDAO.getOrders(userEmail, beginDate, endDate);
-           if(orderList!=null){
-               request.setAttribute("orderList",orderList);
-               request.setAttribute("isFromDateFilter","1");
-               if(request.getParameter("fromUser")==null){
-                   request.getRequestDispatcher("adminViewOrder.jsp").forward(request, response);
-               }else{
-                   request.getRequestDispatcher("personalPage.jsp").forward(request, response);
-               }
-               
-           }
+            String orderId = request.getParameter("orderId");
+            int currentOrder = 0;
+            if(orderId!=null){ //In case the user DOES NOT submit the order from the cart.
+                 currentOrder = Integer.parseInt(orderId);
+            }        
+            boolean isReordered = OrderDAO.Reorder(currentOrder);
+            if(isReordered == false){
+                request.setAttribute("warningMsg","Something went wrong and we couldn't reorder this order.");            
+            }            
+            else{            
+                request.setAttribute("warningMsg","Reordered complete!");            
+                request.getRequestDispatcher("personalPage.jsp").forward(request,response);
+            }
         }
     }
 
