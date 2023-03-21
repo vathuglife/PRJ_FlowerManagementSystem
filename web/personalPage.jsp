@@ -80,7 +80,7 @@
                 }
 
             %>                
-                <h1>Kore wa user page bietch</h1>
+                <h1>Kore wa user page</h1>
                 <h2>Username: <%=account.getFullname()%></h2>
                 <h2>Email: <%=account.getEmail()%></h2>
                 <h2>Phone: <%=account.getPhone()%></h2>

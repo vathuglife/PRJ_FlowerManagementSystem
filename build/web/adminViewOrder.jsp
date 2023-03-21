@@ -57,8 +57,7 @@
                 ArrayList<Order> orderList = (ArrayList<Order>)request.getAttribute("orderList");
                 String email = request.getParameter("userEmail");
                 %>
-                <h2>List of orders </h2>
-                <a href="admin.jsp">Back to admin page</a>
+                <h2>List of orders </h2>                
                 <h2>Filter Date</h2>
                 <form action="MainController">
                     From <input type="date" name="beginDate" 

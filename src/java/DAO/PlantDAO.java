@@ -34,13 +34,13 @@ public class PlantDAO {
                 //If user prompts to search by name
                 if(searchby.equals("name")){                    
                     processedQuery += baseQuery + 
-                            " WHERE p.Pname like '%"+keyword+"%'";
+                            " WHERE p.Pname like '%"+keyword+"%' AND status=1";
                     
                 }else if (searchby.equals("category")){ //If user prompts to search by category
                     processedQuery += baseQuery + 
-                            " WHERE c.CateName like '%"+keyword+"%'";
+                            " WHERE c.CateName like '%"+keyword+"%' AND status=1";
                 }else{
-                    processedQuery += baseQuery;
+                    processedQuery += baseQuery+" AND status=1";
                 }
                 pst = cn.prepareStatement(processedQuery);                                
                 rst = pst.executeQuery();
@@ -197,5 +197,26 @@ public class PlantDAO {
         
         
         return isAdded;
+    }
+    public static boolean deletePlant(int plantID){
+        boolean isDeleted = false;
+        Connection cn = null;
+        PreparedStatement pst = null;
+        try{
+            cn = DBUtils.makeConnection();
+            if(cn!=null){
+                String query = "UPDATE Plants\n" +                                
+                                "SET status = 0\n" +
+                                "WHERE PID = ?";
+                pst = cn.prepareStatement(query);
+                pst.setInt(1,plantID);               
+                
+                int result = pst.executeUpdate();
+                if(result!=0) isDeleted = true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return isDeleted;
     }
 }

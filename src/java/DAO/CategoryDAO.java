@@ -64,4 +64,26 @@ public class CategoryDAO {
         }
         return isAdded;
     }
+    public static boolean updateCategory(int CateId,String newCatename){
+        boolean isDeleted = false;
+        Connection cn = null;
+        PreparedStatement pst = null;
+        
+        try{
+            cn = DBUtils.makeConnection();
+            if(cn!=null){
+                
+                String query = "UPDATE Categories SET CateName = ? WHERE CateID = ?";
+                pst = cn.prepareStatement(query);
+                pst.setString(1,newCatename);
+                pst.setInt(2,CateId);
+                int result = pst.executeUpdate();
+                if(result!=0) isDeleted = true;                
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        
+        }
+        return isDeleted;
+    }
 }

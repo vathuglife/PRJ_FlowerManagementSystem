@@ -96,6 +96,18 @@
         <servlet-name>ReorderServlet</servlet-name>
         <servlet-class>Servlets.Common.ReorderServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletePlantServlet</servlet-name>
+        <servlet-class>Servlets.Admin.DeletePlantServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCategoryServlet</servlet-name>
+        <servlet-class>Servlets.Admin.DeleteCategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCategoryServlet</servlet-name>
+        <servlet-class>Servlets.Admin.UpdateCategoryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -191,6 +203,18 @@
     <servlet-mapping>
         <servlet-name>ReorderServlet</servlet-name>
         <url-pattern>/ReorderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePlantServlet</servlet-name>
+        <url-pattern>/DeletePlantServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCategoryServlet</servlet-name>
+        <url-pattern>/DeleteCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCategoryServlet</servlet-name>
+        <url-pattern>/UpdateCategoryServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -54,6 +54,8 @@
                                 <td><%=eachPlant.getDescription()%></td>
                                 <td><a href="MainController?action=updatePlant&plantId=<%=eachPlant.getId()%>">
                                         Update Details</a></td>
+                                <td><a href="MainController?action=deletePlant&plantId=<%=eachPlant.getId()%>">
+                                        Delete</a></td>
                                 
                             </tr>
                             <%

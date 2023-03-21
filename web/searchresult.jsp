@@ -40,8 +40,9 @@
 		</form>
 		<div id="menu-options-container">
 			<ul>
-				<li class="menu-options">Login</li>
-				<li class="menu-options">Register</li>
+                            <li class="menu-options"><a href="login.html">Login</a></li>
+                            <li class="menu-options"><a href="register.html">Register</a></li>
+                                <li class="menu-options"> <a href="index.jsp">Back to home</a></li>
 			</ul>
 		</div>
 

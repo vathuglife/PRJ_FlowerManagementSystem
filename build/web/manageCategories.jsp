@@ -34,14 +34,22 @@
                     <table>
                         <tr>
                             <th>Name</th>
-                            
+                            <th>New name</th>
+                            <th>Action</th>                                                        
                         </tr>
                         <%
                         for(Category eachCate:cateList){                        
                             
                             %>
                             <tr>
-                                <td><%=eachCate.getCatename()%></td>                                                                                                
+                                <td><%=eachCate.getCatename()%></td>                                                                                                                                
+                                <td>
+                                    <form action="MainController">
+                                        <input type="hidden" name="cateId" value="<%=eachCate.getCateId()%>">
+                                        <input type="text" name="newCatename">
+                                        <input type="submit" name="action" value="updateCategory">
+                                    </form>
+                                </td>
                             </tr>
                             <%
                         }
